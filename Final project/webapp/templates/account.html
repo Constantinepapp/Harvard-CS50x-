@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+{% with messages= get_flashed_messages(with_categories=true) %}
+             {% if messages %}
+                {% for category,message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                
+                </div>
+                {% endfor %}
+             {% endif %}
+          {% endwith %}
+          
+<form method="POST">
+  <div class="container">
+    <div class="media-body">
+      <h2 class="account-heading text-white" align="center">Account</h2>
+      <form method="POST">
+        <div class="container col-lg-3 text-white">  
+        <fieldset class="form-group text-white" method="POST">
+        <div>
+          {{ form.hidden_tag() }}
+          {{ form.email.label(class="form-control-label") }}
+          {{ form.email(class="form-control form-control-sm") }}
+        </div>
+        <div>
+          {{ form.username.label(class="form-control-label") }}
+          {{ form.username(class="form-control form-control-sm")}}
+        </div>
+        <div>
+            {{ form.resting_heart.label(class="form-control-label") }}
+            {{ form.resting_heart(class="form-control form-control-sm")}}
+        </div>
+        <div>
+            {{ form.maximum_heart.label(class="form-control-label") }}
+            {{ form.maximum_heart(class="form-control form-control-sm")}}
+        </div>
+        <div>
+            {{ form.lactate_heart.label(class="form-control-label") }}
+            {{ form.lactate_heart(class="form-control form-control-sm")}}
+        </div>
+        </fieldset>
+        <div class="form-group" align="center" ">
+          {{form.submit(class='btn btn-outline-info style="background-color:rgb(21, 124, 228);')}}
+
+        </div>
+        
+      
+    </div>
+  </div>
+</form>
+{% endblock content %}

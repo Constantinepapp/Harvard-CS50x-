@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+          
+          
+          <div class="text-light" style="background-color:#1a1e24;">
+            <div class='container-fluid' style="background-color:#1a1e24;">
+              {% with messages= get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category,message in messages %}
+                <div class="alert alert-{{ category }}" >
+                  {{ message }}
+                
+                </div>
+                {% endfor %}
+              {% endif %}
+              {% endwith %}
+            </div>
+              <form method="POST">
+                <div class="container col-lg-3">  
+                <fieldset class="form-group">
+                <div>
+                  {{ form.hidden_tag() }}
+                  {{ form.Date.label(class="form-control-label") }}
+                  {{ form.Date(class="form-control form-control-sm") }}
+                </div>
+                <div>
+                  {{ form.Distance.label(class="form-control-label") }}
+                  {{ form.Distance(class="form-control form-control-sm")}}
+                </div>
+                <div>
+                    {{ form.Duration.label(class="form-control-label") }}
+                    {{ form.Duration(class="form-control form-control-sm")}}
+                </div>
+                <div>
+                    {{ form.Heart_rate.label(class="form-control-label") }}
+                    {{ form.Heart_rate(class="form-control form-control-sm")}}
+                </div>
+                <div>
+                    {{ form.elevation_up.label(class="form-control-label") }}
+                    {{ form.elevation_up(class="form-control form-control-sm")}}
+                </div>
+                <div>
+                    {{ form.elevation_down.label(class="form-control-label") }}
+                    {{ form.elevation_down(class="form-control form-control-sm")}}
+                </div>
+                <div style="width:350px;" align="center">
+                    {{ form.submit(class="btn btn-outline-info btn-light btn-center") }}
+                </div>
+                <div class="container shadow-lg p-3 mb-5 bg-dark rounded" ><a style="font-size: large"><span class="d-block p-2 bg-primary text-white">Activity Running Fitness :     {{Rundex}}</span></div>
+                
+                
+
+                 
+                
+                </fieldset>
+                </div>
+
+                
+              </form>
+          </div>
+{% endblock %}

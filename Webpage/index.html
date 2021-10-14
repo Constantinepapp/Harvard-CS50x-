@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    </head>
+    <body>
+
+      <div class="col-sm-12 xyz text-center" style="background: url('slices3.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      padding: 0%;
+      -o-background-size: cover;" > <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+
+
+
+      <nav class="navbar navbar-expand-lg" style="background-color: #212424;">
+        <a class="navbar-brand text-white" href="#">AteThat</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active text-white" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link text-white" href="#">Features</a>
+            <a class="nav-item nav-link text-white" href="#">Pricing</a>
+            <a class="nav-item nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-item nav-link text-white" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </div>
+        </div>
+          <ul class="navbar-nav ml-auto">
+                <li class="nav-item ml-auto">
+                  <a class="nav-link" href="">Account</a>
+                </li>
+                <li class="nav-item ml-auto">
+                  <a id="logout" class="nav-link" href="">Logout</a>
+                </li>
+          </ul>
+      </nav>
+
+
+
+
+            <div class="container">
+                <div class="row justify-content-md-center mt-5">
+                    <div class="col-lg-4">
+                        <form class="form-inline">
+                            <div class="form-group mx-sm-3 mb-2">
+                              <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose size</option>
+                                <option value="small">Small</option>
+                                <option value="">Normal</option>
+                                <option value="large">Large</option>
+                              </select>
+                              <input type="text" class="form-control" style="margin-left:10px;" id="inputFood" placeholder="Search food data">
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <button  id="Button"  class="btn mb-2 text-white" style="background-color: #212424;">Confirm identity</button>
+                    </div>
+                </div>
+
+                <div class="row justify-content-md-center" >
+                  <div class="col-lg-10 mt-5">
+                    <div class="card text-center">
+
+                      <div class="card-body" style="background-color: rgb(140, 224, 224);">
+                        <h5 id="foodType" class="card-title">--</h5>
+                        <p class="card-text">
+                          <div class="row">
+                            <div class="col-sm font-weight-bold">
+                              Calories (kcal)
+                            </div>
+                            <div class="col-sm font-weight-bold">
+                              Fat (gr)
+                            </div>
+                            <div class="col-sm font-weight-bold">
+                              Carbs (gr)
+                            </div>
+                            <div class="col-sm font-weight-bold">
+                              Protein (gr)
+                            </div>
+                            <div class="col-sm font-weight-bold">
+                              Weight (gr)
+                            </div>
+                            <div class="col-sm font-weight-bold">
+                              New Weight
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div id="calories" class="col-sm">
+                              0
+                            </div>
+                            <div id="fat" class="col-sm">
+                              0
+                            </div>
+                            <div id="carbonhydrates" class="col-sm">
+                              0
+                            </div>
+                            <div id="protein" class="col-sm">
+                              0
+                            </div>
+                            <div id="weight" class="col-sm">
+                              0
+                            </div>
+                            <div class="col-sm">
+                              <input type="text" class="form-control" style="margin-left:10px;" id="weightNew" placeholder="New Weight">
+                              <button  id="ButtonNewWeight"  class="btn btn-sm mb-2 text-white" style="background-color: #212424;">New</button>
+                            </div>
+                          </div>
+
+                        <a id ="ButtonEntry" class="btn text-white" style="background-color: #212424;">Save Entry</a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify"  style="margin:70px">
+                  <table id="entryTable" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Food</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">Carbonhydrates</th>
+                        <th scope="col">Fat</th>
+                        <th scope="col">Protein</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-white font-weight-bold" style="background-color: rgb(19, 19, 19);">
+                        <th scope="row">Summary</th>
+                        <td>All</td>
+                        <td id="totalCalories">0</td>
+                        <td id="totalCarbs">0</td>
+                        <td id="totalFat">0</td>
+                        <td id="totalProtein">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+
+                <div class="row justify-content-md-center" >
+                  <div class="col-lg-10 mt-5">
+                    <div class="card text-center">
+
+                      <div class="card-body" style="background-color: rgb(214, 227, 236);">
+                        <h5 id="foodType" class="card-title">Day Analysis</h5>
+                        <p class="card-text">
+                          <div class="row">
+                            <canvas id="myChart"></canvas>
+                          </div>
+                          <div class="row">
+
+                          </div>
+
+                        <button  id="ButtonChart"  class="btn btn-sm mb-2 text-white" style="background-color: #212424;">Refresh Chart</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+
+
+
+
+        <script src="index.js"></script>
+        <script src="script.js"></script>
+
+
+
+
+    </body>
+</html>

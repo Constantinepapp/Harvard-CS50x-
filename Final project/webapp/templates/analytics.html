@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="wrapper" style="responsive: true;">
+<div style="background-color:#1a1e24;"><figure>
+    <embed type="image/svg+xml"  src= {{graph_data|safe}} />
+  </figure></div>
+  <div class="card" style="background-color:#1a1e24;">
+    <div class="card-body" >
+      <h3 class="text-info text-center">Your current Running Fitness is: <h3 class="text-white text-center">{{your_running_fitness}}</h3></h3>
+    </div>
+  </div>
+</div>  
+  
+
+{% endblock content %}

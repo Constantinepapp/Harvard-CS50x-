@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container col-lg-6 text-secondary" >
+  <div class="jumbotron" style="background-color:rgb(165, 181, 202);" align="center">
+    <h1 class="display-4"></h1>
+    <p class="lead">A simple Metronome type heart rate monitor</p>
+    <hr class="my-4">
+    <div class="card text-white bg-secondary mb-3" style="width: 20rem;">
+      <div class="card-body">
+        <p>Beats <span id="displayCount">0</span> times.</p>
+        <p>Time <span id="displayTime">0</span> seconds</p>
+        <p><h3>Heart Rate <span id="heartRate">0</span> bpm</p></h3>
+      </div>
+    </div>
+    <input type="button" class="card-link btn btn-sm btn-primary" value="Start" id="startButton" />
+    <input type="button" class="card-link btn btn-lg btn-success" value="Heart Beat" id="countButton" />
+    <a class="card-link btn btn-sm btn-danger" href="{{ url_for('heartmonitor',username=current_user.username) }}">Reset</a>
+    
+  </div>
+</div>
+
+
+
+    
+
+
+    <script type="text/javascript">
+      var count = 0;
+      var button = document.getElementById("countButton");
+      var display = document.getElementById("displayCount");
+      var timer=document.getElementById("displayTime");
+      var beatsMinute=document.getElementById("heartRate");
+      
+      var start=document.getElementById("startButton")
+
+      button.onclick = function(){
+        count++;
+        display.innerHTML = count;
+      }
+      
+      var seconds = 0;
+      start.onclick=function (){
+        setInterval(function () {
+        seconds++;
+        timer.innerHTML = seconds;
+        beats=display.innerHTML;
+        beats=parseInt(beats, 10);
+        
+        beatsMin=(beats/seconds)*60;
+        beatsMin=parseInt(beatsMin,10);
+        beatsMinute.innerHTML=beatsMin;
+
+      }, 1000);
+      }
+
+    </script>
+
+</div>
+</div>
+{% endblock content %}

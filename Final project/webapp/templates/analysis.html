@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container col-lg-3 text-secondary" >
+    <div class="card text-white bg-secondary mb-3" align="center" style="width: 20rem;">
+        <div class="card-body">
+            <h2>Your Running Index is : <h2 class="text-info">{{Running_fitness}}</h2></h2>
+            <h4>Your Estimated Vo2max is : <h2 class="text-white">{{VO2max}}</h2></h4>
+        </div>
+    </div>
+</div>
+
+<div class="container col-lg-3 text-secondary" >
+    <div class="card text-white bg-secondary mb-3" align="center" style="width: 20rem;">
+        <div class="card-body">
+            <h2>Cooper Test <button type="button" class="card-link btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">?</button></h2>
+            <h5>Distance covered in 12 minutes</h4>
+            <input type="number" class="card-link" value="Start" id="inputDistance" />
+            <input type="button" class="card-link btn btn-sm btn-primary" value="Calculate" id="Calculate" />
+            <h4 >Your Estimated Vo2max is :</h4> 
+            <h2 class="text-white" id="result">0</h2>
+        </div>
+    </div>
+</div>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cooper Test and Vo2max</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Kenneth H. Cooper conducted a study for the United States Air Force in the late 1960s. One of the results of this was the Cooper test in which the distance covered running in 12 minutes is measured. Based on the measured distance, an estimate of VO2 max [in mL/(kg·min)] is:
+            <h3>VO2max=(d-504.9)/44.73</h3>
+            where d is distance (in metres) covered in 12 minutes.
+            <a href="https://en.wikipedia.org/wiki/VO2_max">source: Wikipedia</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <script>
+
+        var vo=document.getElementById("result");
+        var calculate=document.getElementById("Calculate")
+        var input=document.getElementById("inputDistance")
+
+        
+
+        calculate.onclick=function(){
+            distance =input.value;
+            vomax=(distance-504.9)/44.73;
+            vomax=Math.round(vomax,1);
+            vo.innerHTML=vomax;
+
+            
+        }
+
+        
+    </script>
+
+{% endblock content %}

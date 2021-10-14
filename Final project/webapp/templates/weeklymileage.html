@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="wrapper" style="responsive: true;">
+<div style="background-color:#1a1e24;">
+    <figure>
+    <embed type="image/svg+xml"  src= {{trainingload_graph|safe}} />
+    </figure>
+
+</div style="background-color:#1a1e24;">
+<div class="card" style="background-color:#1a1e24;">
+    <div class="card-body" >
+        <h3 class="text-info text-center" style="background-color:#1a1e24;">Average mileage per week :{{Average_per_week}}</h3>
+    </div>
+  </div>
+</div>
+{% endblock content %}

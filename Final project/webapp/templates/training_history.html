@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3 class="text-info text-center" style="background-color:#1a1e24;">Training History</divstyle="background-color:#1a1e24;">
+  {% with messages= get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+     {% for category,message in messages %}
+     <div class="alert alert-{{ category }}">
+       {{ message }}
+     
+     </div>
+     {% endfor %}
+  {% endif %}
+{% endwith %}
+    <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Distance</th>
+        <th scope="col">Heart Rate</th>
+        <th scope="col">Running Fitness</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dat in table %}
+      
+      <tr>
+        <th scope="row">{{dat.date}}</th>
+        <td>{{dat.duration}}</td>
+        <td>{{dat.distance}}</td>
+        <td>{{dat.Heart_rate}}</td>
+        <td>{{dat.running_index}}</td>
+        <td>
+          <form method="POST" action="{{url_for('delete_activity',activity_id=dat.id,username=current_user.username)}}">
+          <button class="btn btn-danger" type="submit" value="Delete" >Delete</button
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+
+{% endblock content %}

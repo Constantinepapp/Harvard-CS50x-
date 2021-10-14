@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Zone</th>
+        <th scope="col">Low Limit</th>
+        <th scope="col">Upper Limit</th>
+        <th scope="col">Maximum Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger text-dark">
+        <th scope="row">Maximum</th>
+        <td>{{max1}}</td>
+        <td>{{max}}</td>
+        <td><h5> km/hr</h5></td>
+      </tr>
+      <tr class="table-warning text-dark">
+        <th scope="row">Threshold</th>
+        <td>{{thre1+1}}</td>
+        <td>{{thre2+1}}</td>
+        <td><h5>{{Tempo_speed_theory}} km/hr</h5></td>
+      </tr>
+      <tr class="table-success text-dark">
+        <th scope="row">Aerobic 2</th>
+        <td>{{aer3+1}}</td>
+        <td>{{aer4+1}}</td>
+        <td><h5>{{Aerobic_speed_theory}} km/hr</h5></td>
+      </tr>
+      <tr class="table-info text-dark">
+        <th scope="row">Aerobic 1</th>
+        <td>{{aer1+1}}</td>
+        <td>{{aer2+1}}</td>
+        <td><h5> km/hr</h5></td>
+      </tr>
+      <tr class="table-light text-dark">
+        <th scope="row">Recovery</th>
+        <td>{{rest}}</td>
+        <td>{{aer1}}</td>
+        <td><h5> km/hr</h5></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Running Fitness</th>
+        <th scope="col">Aerobic speed </th>
+        <th scope="col"><button type="button" class="card-link btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">?</button></h2></th>
+      </tr>
+      {% for i in range(Running_fitness_int-25,Running_fitness_int-15) %}
+      <tr>
+        <th scope="row">{{Running_fitness_table[i]}}</th>
+        <td>{{Aerobic_speed_table[i]}}   km/hr</td>
+      {% endfor %} 
+    </thead>
+
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Heart rate and Speed zones</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Heart rate zones calculated using Karvonen formula.</p>
+            <p>The equations for maximum speeds in different zones are personally created by me. No scientific experiments and researches to back them up.</p>
+            <p>Using speed and heart rate data from several athletes (18 currently) i created an graph of maximum speeds on each zone and Running Performance Indexes.
+            Using Linear fitting i created an equation to calculate maximum speeds on each zone using just the current Running Performance Index</p>
+            <p>As more data are added in the future i expect the equations to become more accurate</p>
+                       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+{% endblock content %}

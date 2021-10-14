@@ -1,0 +1,291 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container-fluid" style="background-color:#1a1e24;">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Under constuction</h3>
+        </div>
+    
+    
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Stats box -->
+    <!-- ============================================================== -->
+    <div class="row row mt-5">
+        <div class="col-lg-3">
+            <div style="background-color: rgb(96, 122, 155);" class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="#"></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Running Index</h6>
+                            <h2 class="m-t-0 text-white">{{your_running_fitness}}</h2></div>
+                    </div>
+                </div>
+                <table class="table vm font-14 m-b-0">
+                    <tbody><tr>
+                        <td class="b-0">5 kilometers</td>
+                        <td class="text-right font-medium b-0">{{estimate_5km}}</td>
+                    </tr>
+                    <tr>
+                        <td>10 kilometers</td>
+                        <td class="text-right font-medium">{{estimate_10km}}</td>
+                    </tr>
+                    <tr>
+                        <td>Half Marathon</td>
+                        <td class="text-right font-medium">{{estimate_21km}}</td>
+                    </tr>
+                    <tr>
+                        <td>Marathon</td>
+                        <td class="text-right font-medium">{{estimate_42km}}</td>
+                    </tr>
+                    <tr>
+                        <td><button style="background-color:#CA9F4E;" type="button" class="card-link btn btn-sm" data-toggle="modal" data-target="#estimated_times">Feedback</button></td>
+                    
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div style="background-color: rgb(202, 159, 78);" class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <a><img src="{{url_for('static',filename='images/vo2.png')}}" style="width: 120; height:70;"></a>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Vo2max</h6>
+                            <h2 class="m-t-0 text-white">{{VO2max}}</h2></div>
+                    </div>
+                    <table class="table vm font-14 m-b-0">
+                        <tbody><tr>
+                            <td class="b-0">Excellent</td>
+                            <td class="text-right font-medium b-0">38.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Good</td>
+                            <td class="text-right font-medium">30.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Average</td>
+                            <td class="text-right font-medium">7.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Poor</td>
+                            <td class="text-right font-medium">23.1%</td>
+                        </tr>
+                        <tr>
+                            <td><button style="background-color:#607A9B;" type="button" class="card-link btn btn-sm" data-toggle="modal" data-target="#formcheck">Feedback</button></td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div style="background-color: rgb(136, 52, 52);" class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="#"></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Distance last 30 days</h6>
+                            <h2 class="m-t-0 text-white">35 km</h2></div>
+                    </div>
+                    <table class="table vm font-14 m-b-0">
+                        <tbody><tr>
+                            <td class="b-0">Aerobic</td>
+                            <td class="text-right font-medium b-0">38.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Tempo</td>
+                            <td class="text-right font-medium">30.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum</td>
+                            <td class="text-right font-medium">7.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Other/Compination</td>
+                            <td class="text-right font-medium">23.1%</td>
+                        </tr>
+                        <tr>
+                            <td><button style="background-color:#607A9B;" type="button" class="card-link btn btn-sm" data-toggle="modal" data-target="#formcheck">Feedback</button></td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div style="background-color: rgb(48, 138, 100);" class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="#" alt="Income"></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Your current form</h6>
+                            <h2 id="form_value" class="m-t-0 text-white">{{form_current}}</h2></div>
+                
+                    </div>
+                    <table class="table vm font-14 m-b-0">
+                        <tbody><tr id="over">
+                            <td class="b-0">Over training</td>
+                            <td class="text-right font-medium b-0">-20</td>
+                        </tr>
+                        <tr id="optimal">
+                            <td>Optimal</td>
+                            <td class="text-right font-medium">-10</td>
+                        </tr>
+                        <tr id="under">
+                            <td>Under training</td>
+                            <td id="under" class="text-right font-medium">0</td>
+                        </tr>
+                        <tr id="prerace">
+                            <td>Prerace</td>
+                            <td class="text-right font-medium">5</td>
+                        </tr>
+                        <tr>
+                            <td><button style="background-color: rgb(124, 93, 153);" type="button" class="card-link btn btn-sm" data-toggle="modal" data-target="#formcheck">Feedback</button></td>
+                        
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Sales overview chart -->
+    <!-- ============================================================== -->
+    
+        <!-- ============================================================== -->
+        <!-- visit charts-->
+        <!-- ============================================================== -->
+       
+
+    <div class="row mt-5">
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="stats">
+                                    <h1 class="text-white">9062+</h1>
+                                    <h6 class="text-white">Subscribe</h6>
+                                    <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Check list</button>
+                                </div>
+                                <div class="stats-icon text-right ml-auto"><i class="fa fa-envelope display-5 op-3 text-dark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="stats">
+                                    <h1 class="text-white">6509+</h1>
+                                    <h6 class="text-white">Facebook Likes</h6>
+                                    <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Check list</button>
+                                </div>
+                                <div class="stats-icon text-right ml-auto"><i class="fab fa-facebook-f display-5 op-3 text-dark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="stats">
+                                    <h1 class="text-white">3257+</h1>
+                                    <h6 class="text-white">Twitter Followers</h6>
+                                    <button class="btn btn-rounded btn-outline btn-light m-t-10 font-14">Check list</button>
+                                </div>
+                                <div class="stats-icon text-right ml-auto"><i class="fab fa-twitter display-5 op-3 text-dark"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h4 class="card-title"><span class="lstick"></span>Website Visit</h4>
+                        <ul class="list-inline m-b-0 ml-auto">
+                            <li>
+                                <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Site A view</h6> </li>
+                            <li>
+                                <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Site B view</h6> </li>
+                        </ul>
+                    </div>
+                    <div class="text-center m-t-30">
+                        <div class="btn-group " role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-sm btn-secondary">PAGEVIEWS</button>
+                            <button type="button" class="btn btn-sm btn-secondary">REFERRALS</button>
+                        </div>
+                    </div>
+                    <div class="website-visitor p-relative m-t-30" style="height:355px; width:100%;"><div class="chartist-tooltip"></div><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-grids"><line x1="30" x2="30" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="117.28571428571429" x2="117.28571428571429" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="204.57142857142858" x2="204.57142857142858" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="291.8571428571429" x2="291.8571428571429" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="379.14285714285717" x2="379.14285714285717" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="466.42857142857144" x2="466.42857142857144" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="553.7142857142858" x2="553.7142857142858" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line x1="641" x2="641" y1="15" y2="320" class="ct-grid ct-horizontal"></line><line y1="320" y2="320" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="269.1666666666667" y2="269.1666666666667" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="218.33333333333331" y2="218.33333333333331" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="167.5" y2="167.5" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="116.66666666666666" y2="116.66666666666666" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="65.83333333333334" y2="65.83333333333334" x1="30" x2="641" class="ct-grid ct-vertical"></line><line y1="15" y2="15" x1="30" x2="641" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><path d="M30,320L30,320C59.095,303.056,88.19,274.815,117.286,269.167C146.381,263.519,175.476,263.519,204.571,259C233.667,254.481,262.762,250.795,291.857,238.667C320.952,226.538,350.048,65.833,379.143,65.833C408.238,65.833,437.333,222.121,466.429,228.5C495.524,234.879,524.619,238.667,553.714,238.667C582.81,238.667,611.905,130.222,641,76L641,320Z" class="ct-area" x1="NaN"></path><path d="M30,320C59.095,303.056,88.19,274.815,117.286,269.167C146.381,263.519,175.476,263.519,204.571,259C233.667,254.481,262.762,250.795,291.857,238.667C320.952,226.538,350.048,65.833,379.143,65.833C408.238,65.833,437.333,222.121,466.429,228.5C495.524,234.879,524.619,238.667,553.714,238.667C582.81,238.667,611.905,130.222,641,76" class="ct-line"></path><line x1="30" y1="320" x2="30.01" y2="320" class="ct-point" ct:value="0"></line><line x1="117.28571428571429" y1="269.1666666666667" x2="117.2957142857143" y2="269.1666666666667" class="ct-point" ct:value="5"></line><line x1="204.57142857142858" y1="259" x2="204.58142857142857" y2="259" class="ct-point" ct:value="6"></line><line x1="291.8571428571429" y1="238.66666666666669" x2="291.8671428571429" y2="238.66666666666669" class="ct-point" ct:value="8"></line><line x1="379.14285714285717" y1="65.83333333333334" x2="379.15285714285716" y2="65.83333333333334" class="ct-point" ct:value="25"></line><line x1="466.42857142857144" y1="228.5" x2="466.43857142857144" y2="228.5" class="ct-point" ct:value="9"></line><line x1="553.7142857142858" y1="238.66666666666669" x2="553.7242857142858" y2="238.66666666666669" class="ct-point" ct:value="8"></line><line x1="641" y1="76" x2="641.01" y2="76" class="ct-point" ct:value="24"></line></g><g class="ct-series ct-series-b"><path d="M30,320L30,320C59.095,309.833,88.19,289.5,117.286,289.5C146.381,289.5,175.476,309.833,204.571,309.833C233.667,309.833,262.762,305.476,291.857,299.667C320.952,293.857,350.048,238.667,379.143,238.667C408.238,238.667,437.333,309.833,466.429,309.833C495.524,309.833,524.619,269.167,553.714,269.167C582.81,269.167,611.905,296.278,641,309.833L641,320Z" class="ct-area" x1="NaN"></path><path d="M30,320C59.095,309.833,88.19,289.5,117.286,289.5C146.381,289.5,175.476,309.833,204.571,309.833C233.667,309.833,262.762,305.476,291.857,299.667C320.952,293.857,350.048,238.667,379.143,238.667C408.238,238.667,437.333,309.833,466.429,309.833C495.524,309.833,524.619,269.167,553.714,269.167C582.81,269.167,611.905,296.278,641,309.833" class="ct-line"></path><line x1="30" y1="320" x2="30.01" y2="320" class="ct-point" ct:value="0"></line><line x1="117.28571428571429" y1="289.5" x2="117.2957142857143" y2="289.5" class="ct-point" ct:value="3"></line><line x1="204.57142857142858" y1="309.8333333333333" x2="204.58142857142857" y2="309.8333333333333" class="ct-point" ct:value="1"></line><line x1="291.8571428571429" y1="299.6666666666667" x2="291.8671428571429" y2="299.6666666666667" class="ct-point" ct:value="2"></line><line x1="379.14285714285717" y1="238.66666666666669" x2="379.15285714285716" y2="238.66666666666669" class="ct-point" ct:value="8"></line><line x1="466.42857142857144" y1="309.8333333333333" x2="466.43857142857144" y2="309.8333333333333" class="ct-point" ct:value="1"></line><line x1="553.7142857142858" y1="269.1666666666667" x2="553.7242857142858" y2="269.1666666666667" class="ct-point" ct:value="5"></line><line x1="641" y1="309.8333333333333" x2="641.01" y2="309.8333333333333" class="ct-point" ct:value="1"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="30" y="325" width="87.28571428571429" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">1</span></foreignObject><foreignObject style="overflow: visible;" x="117.28571428571429" y="325" width="87.28571428571429" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">2</span></foreignObject><foreignObject style="overflow: visible;" x="204.57142857142858" y="325" width="87.2857142857143" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">3</span></foreignObject><foreignObject style="overflow: visible;" x="291.8571428571429" y="325" width="87.28571428571428" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">4</span></foreignObject><foreignObject style="overflow: visible;" x="379.14285714285717" y="325" width="87.28571428571428" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">5</span></foreignObject><foreignObject style="overflow: visible;" x="466.42857142857144" y="325" width="87.28571428571433" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">6</span></foreignObject><foreignObject style="overflow: visible;" x="553.7142857142858" y="325" width="87.28571428571422" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 87px; height: 20px;">7</span></foreignObject><foreignObject style="overflow: visible;" x="641" y="325" width="30" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 30px; height: 20px;">8</span></foreignObject><foreignObject style="overflow: visible;" y="269.1666666666667" x="10" height="50.833333333333336" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">0k</span></foreignObject><foreignObject style="overflow: visible;" y="218.33333333333334" x="10" height="50.833333333333336" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">5k</span></foreignObject><foreignObject style="overflow: visible;" y="167.5" x="10" height="50.83333333333333" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">10k</span></foreignObject><foreignObject style="overflow: visible;" y="116.66666666666666" x="10" height="50.83333333333334" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">15k</span></foreignObject><foreignObject style="overflow: visible;" y="65.83333333333334" x="10" height="50.833333333333314" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">20k</span></foreignObject><foreignObject style="overflow: visible;" y="15" x="10" height="50.83333333333334" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 51px; width: 10px;">25k</span></foreignObject><foreignObject style="overflow: visible;" y="-15" x="10" height="30" width="10"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 10px;">30k</span></foreignObject></g><defs><linearGradient id="gradient" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="rgba(255, 255, 255, 1)"></stop><stop offset="1" stop-color="rgba(38, 198, 218, 1)"></stop></linearGradient></defs></svg></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Projects of the month -->
+    <!-- ============================================================== -->
+  
+
+    <!-- Modal Form feedback -->
+  <div class="modal fade" id="formcheck" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Training Load feedback</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-info">"{{message}}"</p>
+            
+                       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal Running Index feedback -->
+    <div class="modal fade" id="estimated_times" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Training Load feedback</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-info">"The estimated times are calculated with the Jack Danniels equation"</p>
+                
+                           
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  <!--javascript files import-->
+  <script src="{{url_for('static',filename='overviewj.js')}}" type="text/javascript"></script>
+  
+  <!--end javascript files-->
+
+  
+{% endblock content %}

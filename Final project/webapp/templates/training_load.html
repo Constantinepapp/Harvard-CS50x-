@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="wrapper" style="responsive: true;">
+<div style="background-color:#1a1e24;" >
+    <figure>{{script1 | safe}}
+        {{div1 | safe}}</figure>
+</div>  
+</div >
+<div class="card" style="background-color:#1a1e24;">
+    <div class="card-body" >
+        <h3 class="text-info text-center" style="background-color:#1a1e24;">Fitness : {{fitness_current}}</h3>
+        <h3 class="text-light text-center" style="background-color:#1a1e24;">Fatigue : {{fatigue_current}}</h3>
+        <h3 class="text-danger text-center" style="background-color:#1a1e24;">Form : {{form_current}}</h3>
+        <h3 class="text-danger text-center" style="background-color:#1a1e24;"><button type="button" class="card-link btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal">?</button></h3>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Training Load</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Fatigue is a representation of acute training load.  This is the impact that each individual workout has on the overall training load.  A multiple hour workout, or a workout with very high intensity will have a greater ATL score than a recovery workout or a very short run.
+                <b>Fatigue is an exponentially weighted average of your training stress scores from the past 7 days which provides an estimate of your fatigue accounting for the workouts you have done recently.</b></p>
+            <p>Fitness or Chronic Training Load is an indication of the cumulative effects that training has had over time.  With consistent training and workouts this will continue to climb.  During periods of lower training stress, recovery weeks and down times your CTL will decrease.  You can even see periods of decrease when doing incredibly hard VO2 intervals.  Because this is based on frequency, intensity and duration a change the decrease in duration can cause a downward shift in CTL.<b> Fitness (CTL) is an exponentially weighted average of your last 42 days of training stress scores (TSS) and reflects the training you have done over the last 6 weeks. However, the workouts you did 15 days ago will impact your Fitness more than the workouts you did 30 days ago.</b></p>
+            <p>Form or Training Stress balance is the difference between Chronic and Accute training loads resulting in an estimation of your level of fatigue/freshness.  This is a gauge of where your fatigue level and a low or even a negative number is a good indication that the body is being stressed, which, with recovery, will ultimately lead to fitness gains.</p>
+            <p><a href="https://trainingpeaks.com/">source: Training Peaks</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div><link rel="stylesheet" href={{cdn_css}} | safe}} type="text/css" />
+    <script type="text/javascript" src={{cdn_js}} | safe}}></script>
+</div>
+
+
+{% endblock content %}
